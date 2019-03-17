@@ -1,17 +1,12 @@
-const express = require('express')
-const expressGraphQL = require('express-graphql')
-const schema = require('./schema')
-const cors = require('cors')
+const { ApolloServer } = require('apollo-server')
+const typeDefs = require('./typeDefs')
+const resolvers = require('./resolvers')
 
-const app = express()
-app.use(cors())
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-app.use('/graphql', expressGraphQL({
-  schema,
-  graphiql: true
-}))
-
-
-app.listen(4000, () => {
-  console.log('Server running on port 4000.');
-})
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`)
+});

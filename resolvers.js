@@ -1,9 +1,10 @@
 const axios = require('axios')
+const { ApolloError } = require('apollo-server')
 
 const resolvers = {
   Query: {
     board: (parent, args) => {
-      return axios.get(`http://localhost:3200/boards/${args.id}`)
+      return axios.get(`http://localhost:3200/boards/1`)
 					.then(res => res.data)
     },
     list: (parent, args) => {
