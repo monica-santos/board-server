@@ -2,9 +2,9 @@
   "boards": [
     {
       "id": "1",
-      "name": "Teste",
+      "name": "Bootcamps IT Lab",
       "favorite": false,
-      "backgroundImage": "caminho absoluto da imagem"
+      "backgroundColor": "#f8f9fa"
     }
   ],
   "lists": [
@@ -27,23 +27,13 @@
       "name": "Urgent",
       "boardId": "1",
       "id": "5c5l1rw"
-    },
-    {
-      "name": "Forgotten",
-      "boardId": "1",
-      "id": "pVcLUyy"
-    },
-    {
-      "name": "Whenever",
-      "boardId": "1",
-      "id": "N4AuiLj"
     }
   ],
   "cards": [
     {
       "id": "1",
       "name": "Bootcamp de React e Graphql",
-      "description": "Terminar de fazer a apresentação e configuralçies",
+      "description": "Terminar de fazer a apresentação e configurações",
       "listId": "1",
       "labelId": "1",
       "userId": "1"
@@ -51,7 +41,7 @@
     {
       "id": "2",
       "name": "Bootcamp de Google Adwords",
-      "description": "Terminar de fazer a apresentação e configuralçies",
+      "description": "Terminar de fazer a apresentação e configurações",
       "listId": "1",
       "labelId": "1",
       "userId": "3"
@@ -59,7 +49,7 @@
     {
       "id": "3",
       "name": "Bootcamp de Angular 7",
-      "description": "Terminar de fazer a apresentação e configuralçies",
+      "description": "Terminar de fazer a apresentação e configurações",
       "listId": "1",
       "labelId": "1",
       "userId": "2"

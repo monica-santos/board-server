@@ -5,7 +5,7 @@ const typeDefs = gql`
     id: ID!
     name: String!
     favorite: Boolean!
-    backgroundImage: String!
+    backgroundColor: String!
     users: [User] 
     lists: [List]
   }

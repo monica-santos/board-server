@@ -113,6 +113,10 @@ const resolvers = {
     user: (parent, args) => {
       return axios.get(`http://localhost:3200/users/${parent.userId}`)
         .then(res => res.data)
+    },
+    comments: (parent, args) => {
+      return axios.get(`http://localhost:3200/comments/?userId=${parent.userId}`)
+        .then(res => res.data)
     }
   },
   Comment: {

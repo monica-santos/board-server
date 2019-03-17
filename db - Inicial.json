@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Teste",
     "favorite": false,
-    "backgroundImage": "caminho absoluto da imagem"
+    "backgroundColor": "caminho absoluto da imagem"
   },
   "lists": [
     {
