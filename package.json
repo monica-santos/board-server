@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "aserver": "nodemon apolloserver.js",
+    "json": "json-server --watch -p 3200 db.json"
+  },
+  "keywords": [
+    "NodeJS",
+    "GraphQL"
+  ],
+  "author": "Monica Santos",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "json-server": "^0.14.2",
+    "nodemon": "^1.18.10"
+  }
+}
