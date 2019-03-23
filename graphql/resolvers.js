@@ -103,30 +103,40 @@ const resolvers = {
   },
   Card: {
     list: (parent, args) => {
-      return axios.get(`http://localhost:3200/lists/${parent.listId}`)
+      if (parent.listId) {
+        return axios.get(`http://localhost:3200/lists/${parent.listId}`)
         .then(res => res.data)
+      }
     },
     label: (parent, args) => {
-      return axios.get(`http://localhost:3200/labels/${parent.labelId}`)
+      if (parent.labelId) {
+        return axios.get(`http://localhost:3200/labels/${parent.labelId}`)
         .then(res => res.data)
+      }
     },
     user: (parent, args) => {
-      return axios.get(`http://localhost:3200/users/${parent.userId}`)
+      if (parent.userId) {
+        return axios.get(`http://localhost:3200/users/${parent.userId}`)
         .then(res => res.data)
+      }
     },
     comments: (parent, args) => {
-      return axios.get(`http://localhost:3200/comments/?userId=${parent.userId}`)
+      return axios.get(`http://localhost:3200/comments/?cardId=${parent.cardId}`)
         .then(res => res.data)
     }
   },
   Comment: {
     user: (parent, args) => {
-      return axios.get(`http://localhost:3200/users/${parent.userId}`)
+      if (parent.userId) {
+        return axios.get(`http://localhost:3200/users/${parent.userId}`)
         .then(res => res.data)
+      }
     },
     card: (parent, args) => {
-      return axios.get(`http://localhost:3200/cards/${parent.cardId}`)
+      if (parent.cardId) {
+        return axios.get(`http://localhost:3200/cards/${parent.cardId}`)
         .then(res => res.data)
+      }
     }
   }
 }

@@ -20,10 +20,10 @@ const typeDefs = gql`
   type Card {
     id: ID!
     name: String!
-    description: String!
+    description: String
     listId: ID!
-    labelId: ID!
-    userId: ID!
+    labelId: ID
+    userId: ID
     list: List 
     label: Label
     user: User
@@ -70,7 +70,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(name: String!, email: String!, username: String!, boardId: ID!): User
     addList(name: String!, boardId: ID!): List
-    addCard(name: String!, description: String!, listId: ID!, labelId: ID!, userId: ID!): Card
+    addCard(name: String!, description: String, listId: ID!, labelId: ID, userId: ID): Card
     addComment(userId: ID!, datetime: String!, content: String!, cardId: ID!): Comment
   }
 `
