@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon server.js",
-    "aserver": "nodemon apolloserver.js",
     "json": "json-server --watch -p 3200 db.json"
   },
   "keywords": [
     "NodeJS",
     "GraphQL"
   ],
-  "author": "Monica Santos",
+  "author": "Mônica Santos",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.4.8",
