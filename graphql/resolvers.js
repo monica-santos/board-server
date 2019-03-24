@@ -49,7 +49,17 @@ const resolvers = {
     },
   },
   Mutation: {
-    addUser: (parent, args) => {
+    addOrUpdateUser: (parent, args) => {
+      if (args.id) {
+        return axios.put(`http://localhost:3200/users/${args.id}`, {
+          id: args.id,
+          name: args.name,
+					email: args.email,
+					username: args.username,
+					boardId: args.boardId
+        })
+        .then(res => res.data)
+      }
       return axios.post(`http://localhost:3200/users`, {
 					name: args.name,
 					email: args.email,
@@ -58,14 +68,31 @@ const resolvers = {
 				})
 				.then(res => res.data)
     },
-    addList: (parent, args) => {
+    addOrUpdateList: (parent, args) => {
+      if (args.id) {
+        return axios.put(`http://localhost:3200/lists/${args.id}`, {
+					name: args.name,
+					boardId: args.boardId
+        })
+        .then(res => res.data)
+      }
       return axios.post(`http://localhost:3200/lists`, {
 					name: args.name,
 					boardId: args.boardId
 				})
 				.then(res => res.data)
     },
-    addCard: (parent, args) => {
+    addOrUpdateCard: (parent, args) => {
+      if (args.id) {
+        return axios.put(`http://localhost:3200/cards/${args.id}`, {
+					name: args.name,
+					description: args.description,
+					listId: args.listId,
+					labelId: args.labelId,
+					userId: args.userId
+        })
+        .then(res => res.data)
+      }
       return axios.post(`http://localhost:3200/cards`, {
 					name: args.name,
 					description: args.description,
@@ -75,7 +102,16 @@ const resolvers = {
 				})
 				.then(res => res.data)
     },
-    addComment: (parent, args) => {
+    addOrUpdateComment: (parent, args) => {
+      if (args.id) {
+        return axios.put(`http://localhost:3200/comments/${args.id}`, {
+					userId: args.userId,
+					datetime: args.datetime,
+					content: args.content,
+					cardId: args.cardId
+        })
+        .then(res => res.data)
+      }
       return axios.post(`http://localhost:3200/comments`, {
 					userId: args.userId,
 					datetime: args.datetime,
@@ -83,6 +119,34 @@ const resolvers = {
 					cardId: args.cardId
 				})
 				.then(res => res.data)
+    },
+    removeUser: (parent, args) => {
+      console.log(args.id)
+      if (args.id) {
+        return axios.delete(`http://localhost:3200/users/${args.id}`)
+        .then(() => args.id)
+      }
+    },
+    removeList: (parent, args) => {
+      console.log(args.id)
+      if (args.id) {
+        return axios.delete(`http://localhost:3200/lists/${args.id}`)
+        .then(() => args.id)
+      }
+    },
+    removeCard: (parent, args) => {
+      console.log(args.id)
+      if (args.id) {
+        return axios.delete(`http://localhost:3200/cards/${args.id}`)
+        .then(() => args.id)
+      }
+    },
+    removeComment: (parent, args) => {
+      console.log(args.id)
+      if (args.id) {
+        return axios.delete(`http://localhost:3200/comments/${args.id}`)
+        .then(() => args.id)
+      }
     }
   },
   Board: {

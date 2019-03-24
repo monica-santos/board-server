@@ -68,10 +68,15 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(name: String!, email: String!, username: String!, boardId: ID!): User
-    addList(name: String!, boardId: ID!): List
-    addCard(name: String!, description: String, listId: ID!, labelId: ID, userId: ID): Card
-    addComment(userId: ID!, datetime: String!, content: String!, cardId: ID!): Comment
+    addOrUpdateUser(id: ID, name: String!, email: String!, username: String!, boardId: ID!): User
+    addOrUpdateList(id: ID, name: String!, boardId: ID!): List
+    addOrUpdateCard(id: ID, name: String!, description: String, listId: ID!, labelId: ID, userId: ID): Card
+    addOrUpdateComment(id: ID, userId: ID!, datetime: String!, content: String!, cardId: ID!): Comment
+    removeUser(id: ID!): ID
+    removeList(id: ID!): ID
+    removeCard(id: ID!): ID
+    removeComment(id: ID!): ID
+
   }
 `
 
