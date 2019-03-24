@@ -1,61 +1,85 @@
 {
-  "board": {
-    "id": 1,
-    "name": "Teste",
-    "favorite": false,
-    "backgroundColor": "caminho absoluto da imagem"
-  },
+  "boards": [
+    {
+      "id": "1",
+      "name": "Bootcamps IT Lab",
+      "favorite": false,
+      "backgroundColor": "#f8f9fa"
+    }
+  ],
   "lists": [
     {
-      "id": 1,
+      "id": "1",
       "name": "To Do",
-      "boardId": 1
+      "boardId": "1"
+    },
+    {
+      "name": "Done",
+      "boardId": "1",
+      "id": "2"
+    },
+    {
+      "name": "Doing",
+      "boardId": "1",
+      "id": "7XB3fhG"
+    },
+    {
+      "name": "Urgent",
+      "boardId": "1",
+      "id": "5c5l1rw"
     }
   ],
   "cards": [
     {
-      "id": 1,
-      "name": "Bootcamp de react e graphql",
-      "description": "Terminar de fazer a apresentação, código do front e backend",
-      "listId": 1,
-      "labelId": 1,
-      "userId": 1
+      "id": "1",
+      "name": "Bootcamp de React e Graphql",
+      "description": "Terminar de fazer a apresentação e configurações",
+      "listId": "1",
+      "labelId": "1",
+      "userId": "1"
     },
     {
-      "id": 2,
-      "name": "Bootcamp de react e redux",
-      "description": "Terminar de fazer a apresentação, código do front e backend",
-      "listId": 1,
-      "labelId": 1,
-      "userId": 1
+      "id": "2",
+      "name": "Bootcamp de Google Adwords",
+      "description": "Terminar de fazer a apresentação e configurações",
+      "listId": "1",
+      "labelId": "1",
+      "userId": "3"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Bootcamp de Angular 7",
-      "description": "Terminar de fazer a apresentação, código do front e backend",
-      "listId": 1,
-      "labelId": 1,
-      "user": 2
+      "description": "Terminar de fazer a apresentação e configurações",
+      "listId": "1",
+      "labelId": "1",
+      "userId": "2"
+    },
+    {
+      "name": "Backend com graphql",
+      "description": "Feito usando express, axios e json-server",
+      "listId": "2",
+      "userId": "1",
+      "id": "7NwxYQi"
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "userId": 2,
+      "id": "1",
+      "userId": "2",
       "datetime": "16/03/2019 16:41:31",
       "content": "Não esquece de terminar.",
       "cardId": 1
     },
     {
-      "id": 2,
-      "userId": 1,
+      "id": "2",
+      "userId": "1",
       "datetime": "16/03/2019 16:42:11",
       "content": "Não esquece de terminar também.",
       "cardId": 3
     },
     {
-      "id": 3,
-      "userId": 1,
+      "id": "3",
+      "userId": "1",
       "datetime": "16/03/2019 16:43:29",
       "content": "Beleza, valeu!",
       "cardId": 1
@@ -63,46 +87,53 @@
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Mônica Santos",
       "email": "monica.santos@itlab.com.br",
       "username": "@monicasantos",
-      "boardId": 1
+      "boardId": "1"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Amanda Lima",
       "email": "amanda.lima@itlab.com.br",
       "username": "@amandalima",
-      "boardId": 1
+      "boardId": "1"
     },
     {
       "name": "Gabriella Alves",
       "email": "gabriella.alves@itlab.com",
       "username": "gabriellaalves",
       "boardId": "1",
-      "id": 3
+      "id": "3"
+    },
+    {
+      "name": "Washington Guedes",
+      "email": "washington.guedes@itlab.com.br",
+      "username": "washingtonguedes",
+      "boardId": "1",
+      "id": "cC3esnc"
     }
   ],
   "labels": [
     {
-      "id": 1,
+      "id": "1",
       "color": "#7a4d90"
     },
     {
-      "id": 2,
+      "id": "2",
       "color": "#6ac7b6"
     },
     {
-      "id": 3,
+      "id": "3",
       "color": "#6ac771"
     },
     {
-      "id": 4,
+      "id": "4",
       "color": "#c76a6a"
     },
     {
-      "id": 5,
+      "id": "5",
       "color": "#6a8bc7"
     }
   ]
