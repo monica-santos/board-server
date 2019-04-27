@@ -74,7 +74,7 @@ const resolvers = {
         },
         addOrUpdateComment: async(parent, args) => {
             const { userId, datetime, content, cardId } = args
-            const comment = { userId, datetime, content, cardId };
+            const comment = { userId, datetime, content, cardId }
             const result = args.id ?
                 await axios.put(`http://localhost:3200/comments/${args.id}`, comment) :
                 await axios.post(`http://localhost:3200/comments`, comment)
@@ -141,7 +141,7 @@ const resolvers = {
             }
         },
         comments: async(parent) => {
-            const comments = await axios.get(`http://localhost:3200/comments/?cardId=${parent.cardId}`)
+            const comments = await axios.get(`http://localhost:3200/comments/?cardId=${parent.id}`)
             return comments.data
         }
     },
