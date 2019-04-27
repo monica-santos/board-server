@@ -1,11 +1,11 @@
 const { ApolloServer, gql } = require('apollo-server');
 
-const typeDefs = gql`
+const typeDefs = gql `
   type Board {
     id: ID!
     name: String!
     favorite: Boolean!
-    backgroundColor: String!
+    backgroundImage: String!
     users: [User] 
     lists: [List]
   }
