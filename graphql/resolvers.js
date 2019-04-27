@@ -1,201 +1,161 @@
 const axios = require('axios')
-const { ApolloError } = require('apollo-server')
 
 const resolvers = {
     Query: {
-        board: (parent, args) => {
-            return axios.get(`http://localhost:3200/boards/1`)
-                .then(res => res.data)
+        board: async(parent, args) => {
+            const board = await axios.get(`http://localhost:3200/boards/1`)
+            return board.data
         },
-        list: (parent, args) => {
-            return axios.get(`http://localhost:3200/lists/${args.id}`)
-                .then(res => res.data)
+        list: async(parent, args) => {
+            const list = await axios.get(`http://localhost:3200/lists/${args.id}`)
+            return list.data
         },
-        lists: (parent, args) => {
-            return axios.get(`http://localhost:3200/lists`)
-                .then(res => res.data)
+        lists: async(parent, args) => {
+            const lists = await axios.get(`http://localhost:3200/lists`)
+            return lists.data
         },
-        card: (parent, args) => {
-            return axios.get(`http://localhost:3200/cards/${args.id}`)
-                .then(res => res.data)
+        card: async(parent, args) => {
+            const card = await axios.get(`http://localhost:3200/cards/${args.id}`)
+            return card.data
         },
-        cards: (parent, args) => {
-            return axios.get(`http://localhost:3200/cards`)
-                .then(res => res.data)
+        cards: async(parent, args) => {
+            const cards = await axios.get(`http://localhost:3200/cards`)
+            return cards.data
         },
-        comment: (parent, args) => {
-            return axios.get(`http://localhost:3200/comments/${args.id}`)
-                .then(res => res.data)
+        comment: async(parent, args) => {
+            const comment = await axios.get(`http://localhost:3200/comments/${args.id}`)
+            return comment.data
         },
-        comments: (parent, args) => {
-            return axios.get(`http://localhost:3200/comments`)
-                .then(res => res.data)
+        comments: async(parent, args) => {
+            const comments = await axios.get(`http://localhost:3200/comments`)
+            return comments.data
         },
-        user: (parent, args) => {
-            return axios.get(`http://localhost:3200/users/${args.id}`)
-                .then(res => res.data)
+        user: async(parent, args) => {
+            const user = await axios.get(`http://localhost:3200/users/${args.id}`)
+            return user.data
         },
-        users: (parent, args) => {
-            return axios.get(`http://localhost:3200/users`)
-                .then(res => res.data)
+        users: async(parent, args) => {
+            const users = await axios.get(`http://localhost:3200/users`)
+            return users.data
         },
-        label: (parent, args) => {
-            return axios.get(`http://localhost:3200/labels/${args.id}`)
-                .then(res => res.data)
+        label: async(parent, args) => {
+            const label = await axios.get(`http://localhost:3200/labels/${args.id}`)
+            return label.data
         },
-        labels: (parent, args) => {
-            return axios.get(`http://localhost:3200/labels`)
-                .then(res => res.data)
+        labels: async(parent, args) => {
+            const labels = await axios.get(`http://localhost:3200/labels`)
+            return labels.data
         },
     },
     Mutation: {
-        addOrUpdateUser: (parent, args) => {
-            if (args.id) {
-                return axios.put(`http://localhost:3200/users/${args.id}`, {
-                        id: args.id,
-                        name: args.name,
-                        email: args.email,
-                        username: args.username,
-                        boardId: args.boardId
-                    })
-                    .then(res => res.data)
-            }
-            return axios.post(`http://localhost:3200/users`, {
-                    name: args.name,
-                    email: args.email,
-                    username: args.username,
-                    boardId: args.boardId
-                })
-                .then(res => res.data)
+        addOrUpdateUser: async(parent, args) => {
+            const { name, email, username, boardId } = args
+            const user = { name, email, username, boardId }
+            const result = args.id ?
+                await axios.put(`http://localhost:3200/users/${args.id}`, user) :
+                await axios.post(`http://localhost:3200/users`, user)
+            return result.data
         },
-        addOrUpdateList: (parent, args) => {
-            if (args.id) {
-                return axios.put(`http://localhost:3200/lists/${args.id}`, {
-                        name: args.name,
-                        boardId: args.boardId
-                    })
-                    .then(res => res.data)
-            }
-            return axios.post(`http://localhost:3200/lists`, {
-                    name: args.name,
-                    boardId: args.boardId
-                })
-                .then(res => res.data)
+        addOrUpdateList: async(parent, args) => {
+            const { name, boardId } = args
+            const list = { name, boardId }
+            const result = args.id ?
+                await axios.put(`http://localhost:3200/lists/${args.id}`, list) :
+                await axios.post(`http://localhost:3200/lists`, list)
+            return result.data
         },
-        addOrUpdateCard: (parent, args) => {
-            if (args.id) {
-                return axios.put(`http://localhost:3200/cards/${args.id}`, {
-                        name: args.name,
-                        description: args.description,
-                        listId: args.listId,
-                        labelId: args.labelId,
-                        userId: args.userId
-                    })
-                    .then(res => res.data)
-            }
-            return axios.post(`http://localhost:3200/cards`, {
-                    name: args.name,
-                    description: args.description,
-                    listId: args.listId,
-                    labelId: args.labelId,
-                    userId: args.userId
-                })
-                .then(res => res.data)
+        addOrUpdateCard: async(parent, args) => {
+            const { name, description, listId, labelId, userId } = args
+            const card = { name, description, listId, labelId, userId }
+            const result = args.id ?
+                await axios.put(`http://localhost:3200/cards/${args.id}`, card) :
+                await axios.post(`http://localhost:3200/cards`, card)
+            return result.data
         },
-        addOrUpdateComment: (parent, args) => {
-            if (args.id) {
-                return axios.put(`http://localhost:3200/comments/${args.id}`, {
-                        userId: args.userId,
-                        datetime: args.datetime,
-                        content: args.content,
-                        cardId: args.cardId
-                    })
-                    .then(res => res.data)
-            }
-            return axios.post(`http://localhost:3200/comments`, {
-                    userId: args.userId,
-                    datetime: args.datetime,
-                    content: args.content,
-                    cardId: args.cardId
-                })
-                .then(res => res.data)
+        addOrUpdateComment: async(parent, args) => {
+            const { userId, datetime, content, cardId } = args
+            const comment = { userId, datetime, content, cardId };
+            const result = args.id ?
+                await axios.put(`http://localhost:3200/comments/${args.id}`, comment) :
+                await axios.post(`http://localhost:3200/comments`, comment)
+            return result.data
         },
-        removeUser: (parent, args) => {
+        removeUser: async(parent, args) => {
             if (args.id) {
-                return axios.delete(`http://localhost:3200/users/${args.id}`)
-                    .then(() => args.id)
+                await axios.delete(`http://localhost:3200/users/${args.id}`)
+                return args.id
             }
         },
-        removeList: (parent, args) => {
+        removeList: async(parent, args) => {
             if (args.id) {
-                return axios.delete(`http://localhost:3200/lists/${args.id}`)
-                    .then(() => args.id)
+                await axios.delete(`http://localhost:3200/lists/${args.id}`)
+                return args.id
             }
         },
-        removeCard: (parent, args) => {
+        removeCard: async(parent, args) => {
             if (args.id) {
-                return axios.delete(`http://localhost:3200/cards/${args.id}`)
-                    .then(() => args.id)
+                await axios.delete(`http://localhost:3200/cards/${args.id}`)
+                return args.id
             }
         },
-        removeComment: (parent, args) => {
+        removeComment: async(parent, args) => {
             if (args.id) {
-                return axios.delete(`http://localhost:3200/comments/${args.id}`)
-                    .then(() => args.id)
+                await axios.delete(`http://localhost:3200/comments/${args.id}`)
+                return args.id
             }
         }
     },
     Board: {
-        users: (parent, args) => {
-            return axios.get(`http://localhost:3200/users/?boardId=${parent.id}`)
-                .then(res => res.data)
+        users: async(parent) => {
+            const users = await axios.get(`http://localhost:3200/users/?boardId=${parent.id}`)
+            return users.data
         },
-        lists: (parent, args) => {
-            return axios.get(`http://localhost:3200/lists/?boardId=${parent.id}`)
-                .then(res => res.data)
+        lists: async(parent) => {
+            const lists = await axios.get(`http://localhost:3200/lists/?boardId=${parent.id}`)
+            return lists.data
         }
     },
     List: {
-        cards: (parent, args) => {
-            return axios.get(`http://localhost:3200/cards/?listId=${parent.id}`)
-                .then(res => res.data)
+        cards: async(parent) => {
+            const cards = await axios.get(`http://localhost:3200/cards/?listId=${parent.id}`)
+            return cards.data
         }
     },
     Card: {
-        list: (parent, args) => {
+        list: async(parent) => {
             if (parent.listId) {
-                return axios.get(`http://localhost:3200/lists/${parent.listId}`)
-                    .then(res => res.data)
+                const list = await axios.get(`http://localhost:3200/lists/${parent.listId}`)
+                return list.data
             }
         },
-        label: (parent, args) => {
+        label: async(parent) => {
             if (parent.labelId) {
-                return axios.get(`http://localhost:3200/labels/${parent.labelId}`)
-                    .then(res => res.data)
+                const label = await axios.get(`http://localhost:3200/labels/${parent.labelId}`)
+                return label.data
             }
         },
-        user: (parent, args) => {
+        user: async(parent) => {
             if (parent.userId) {
-                return axios.get(`http://localhost:3200/users/${parent.userId}`)
-                    .then(res => res.data)
+                const user = await axios.get(`http://localhost:3200/users/${parent.userId}`)
+                return user.data
             }
         },
-        comments: (parent, args) => {
-            return axios.get(`http://localhost:3200/comments/?cardId=${parent.cardId}`)
-                .then(res => res.data)
+        comments: async(parent) => {
+            const comments = await axios.get(`http://localhost:3200/comments/?cardId=${parent.cardId}`)
+            return comments.data
         }
     },
     Comment: {
-        user: (parent, args) => {
+        user: async(parent) => {
             if (parent.userId) {
-                return axios.get(`http://localhost:3200/users/${parent.userId}`)
-                    .then(res => res.data)
+                const user = await axios.get(`http://localhost:3200/users/${parent.userId}`)
+                return user.data
             }
         },
-        card: (parent, args) => {
+        card: async(parent) => {
             if (parent.cardId) {
-                return axios.get(`http://localhost:3200/cards/${parent.cardId}`)
-                    .then(res => res.data)
+                const card = await axios.get(`http://localhost:3200/cards/${parent.cardId}`)
+                return card.data
             }
         }
     }
