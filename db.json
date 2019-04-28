@@ -3,7 +3,7 @@
         "id": "1",
         "name": "Bootcamps IT Lab",
         "favorite": false,
-        "backgroundImage": "doguinho.jpg"
+        "backgroundImage": "doguinho-felizinho.jpg"
     }],
     "lists": [{
             "id": "1",
@@ -19,11 +19,6 @@
             "name": "Doing",
             "boardId": "1",
             "id": "7XB3fhG"
-        },
-        {
-            "name": "Urgent",
-            "boardId": "1",
-            "id": "5c5l1rw"
         }
     ],
     "cards": [{
@@ -53,6 +48,13 @@
             "listId": "2",
             "userId": "1",
             "id": "7NwxYQi"
+        },
+        {
+            "name": "Adicionar e atualizar",
+            "description": "Atualizar o texto depois de adicionar um card.",
+            "listId": "2",
+            "userId": null,
+            "id": "SLELhUC"
         }
     ],
     "comments": [{
